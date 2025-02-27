@@ -8,18 +8,19 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.burakguclu.controller.RestEmployeeController;
 import com.burakguclu.dto.DtoEmployee;
+import com.burakguclu.model.RootEntity;
 import com.burakguclu.service.IEmployeeService;
 
 @RestController
 @RequestMapping("rest/api/employee")
-public class RestEmployeeControllerImpl implements RestEmployeeController {
+public class RestEmployeeControllerImpl extends RestBaseController implements RestEmployeeController {
 
 	@Autowired
 	private IEmployeeService employeeService;
 	
 	@GetMapping("/list/{id}")
 	@Override
-	public DtoEmployee findDtoEmployee(@PathVariable(value = "id") Long id) {
-		return employeeService.findEmployeeById(id);
+	public RootEntity<DtoEmployee> findDtoEmployee(@PathVariable(value = "id") Long id) {
+		return ok(employeeService.findEmployeeById(id));
 	}
 }

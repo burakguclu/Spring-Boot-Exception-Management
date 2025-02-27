@@ -1,8 +1,9 @@
 package com.burakguclu.controller;
 
 import com.burakguclu.dto.DtoEmployee;
+import com.burakguclu.model.RootEntity;
 
 public interface RestEmployeeController {
 
-	public DtoEmployee findDtoEmployee(Long id);
+	public RootEntity<DtoEmployee> findDtoEmployee(Long id);
 }
